@@ -13,10 +13,12 @@ Original image files will remain unchanged – script will make copy of them and
 Execution time limit is set to 30s and script will stop working after such time. You could raise the limit, if server configuration lets to do this, but it's recommended to stick with 30s.
 
 To support webp files on your website, you can use following rule in your .htaccess file:
-`# WEBP ACCEPT
+```
+# WEBP ACCEPT
 RewriteCond %{HTTP_ACCEPT} image/webp
 RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
-RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1]`
+RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1]
+```
 
 It will serve \*.webp file if user's browser accepts it and when such file will be found in the same directory as original file – otherwise, it serves JPG/PNG. Remember, do not remove your original images.
 
