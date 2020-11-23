@@ -1,16 +1,22 @@
-# convert-webp
+# WebP Converter
 Small PHP script to create copies of JPG/PNG files in WebP format. Make your website lighter and more performant.
+
+Most of the weight of an average website are images. You can take an advantage of new technologies of optimization and reduce this load. It will help not only your web server to be more efficient, but also help users with weaker Internet connection and, by the way, help an environment.
+
+This script will find all JPG and PNG files in appointed folder (and its subfolders) and create a copy in WebP format – saving with the same name (except extension, of course) and in the same folder. This can save up to 70% of the size of original image, without losing much quality.
+
+![WebP Converter Preview](/preview.jpg?raw=true "WebP Converter Preview")
 
 ## Requirements
 * PHP
-* Imagick extension (for converting PNG->WebP)
+* Imagick extension (optional, for converting PNG->WebP)
 
 ## How to use
-Download and copy the file convert_webp.php to your server. Edit it with any text editing software and change $startDirectory value to the directory (relative path), where you want to start conversion (the script will also go through subdirectories, but not up), and then open the script in the browser. The best is to use it few times on smaller folders (and check effects of conversion), rather than once on a big one.
+Download and copy the file convert_webp.php to your server. Open the script in the browser, then fill the form with relative path to folder you want to convert and additional options. The best is to use it few times on smaller folders (and check effects of conversion), rather than once on a big one.
 
-Original image files will remain unchanged – script will make copy of them and save in the same folder, with the same name, but with \*.webp extension. If script will find already converted \*.webp file, it will be omitted.
+Original image files will remain unchanged – script will make copy of them and save in the same folder, with the same name, but with \*.webp extension. If script will find already converted \*.webp file, it will be omitted by default (but can be changed in options to overwrite it instead).
 
-Execution time limit is set to 30s and script will stop working after such time. You could raise the limit, if server configuration lets to do this, but it's recommended to stick with 30s.
+Execution time limit is set to 30s and script will stop working after such time. You can raise the limit by editing (in text editor) beginning of the script, but it's recommended to stick with 30s.
 
 To support webp files on your website, you can use following rule in your .htaccess file:
 ```
@@ -23,8 +29,7 @@ RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1]
 It will serve \*.webp file if user's browser accepts it and when such file will be found in the same directory as original file – otherwise, it serves JPG/PNG. Remember, do not remove your original images.
 
 ## To do
-* Clean and consistent code
-* GUI Mode
+* Clean and more consistent code
 * More options
 
 ## Disclaimer
